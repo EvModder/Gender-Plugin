@@ -1,0 +1,31 @@
+name: Gender
+main: me.airpine1.Gender
+version: 1.1
+
+commands:
+   gender:
+      description: Select your gender
+      usage: /gender [male/female]
+      permission: gender.set
+      permission-message: You do not have permission to do this.
+      
+   male:
+      description: Set your gender to male
+      usage: /male
+      permission: gender.set
+      permission-message: You do not have permission to do this.
+
+   femle:
+      description: Set your gender to female
+      usage: /female
+      permission: gender.set
+      permission-message: You do not have permission to do this.
+      
+permissions:
+   gender.set:
+        description: Access to the /gender command.
+        default: true
+        
+   gender.set.others:
+        description: Permission to change others' gender.
+        default: op
