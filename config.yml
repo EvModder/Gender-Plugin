@@ -1,0 +1,11 @@
+#--------------------------------------#
+#           GenderLib config           #
+#--------------------------------------#
+
+# Should player's names be prefixed in chat by a gender?
+show-gender-in-chat: true
+
+# Chat prefixes by gender
+MALE: ""
+FEMALE: ""
+NONE: ""

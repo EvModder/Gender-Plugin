@@ -46,6 +46,15 @@ public final class GenderLib extends JavaPlugin implements Listener{
 		onlinePlayers = new HashMap<UUID, GenderType>();
 		offlinePlayers = new HashMap<UUID, GenderType>();
 		
+		//If a new version is installed, add any new configuration options
+		if(getConfig().getString("version").equals(getDescription().getVersion()) == false){
+			getConfig().options().copyDefaults(true);
+			getConfig().set("version", getDescription().getVersion());
+		}
+		if(getConfig().getBoolean("show-gender-in-chat")){
+			getServer().getPluginManager().registerEvents(new ChatListener(), this);
+		}
+		
 		//load saved data
 		String map = FileData.loadFile("genderlist", "{}");
 		for(String pair : map.substring(1, map.length()).split(", ")){
@@ -77,6 +86,22 @@ public final class GenderLib extends JavaPlugin implements Listener{
 	}
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String args[]){
+		if(cmd.getName().equals("genderof")){
+			if(args.length == 0){
+				sender.sendMessage("§cToo few arguments");
+				return false;
+			}
+			@SuppressWarnings("deprecation")//temporarily depricated, will never be deleted by bukkit however
+			OfflinePlayer targetPlayer = getServer().getOfflinePlayer(args[0]);
+			
+			if(targetPlayer == null){
+				sender.sendMessage("§cPlayer "+args[0]+" not found");
+			}
+			GenderType gender = getGender(targetPlayer.getUniqueId());
+			if(gender == null) sender.sendMessage("§ePlayer "+targetPlayer.getName()+" has not specified a gender");
+			else sender.sendMessage("§ePlayer "+targetPlayer.getName()+" is §a"+gender.toString()+"§e.");
+			return true;
+		}
 		if(cmd.getName().equals("male")){
 			//add the argument "male" to the end of the args[] array
 			String[] oldArgs = args;
@@ -118,7 +143,6 @@ public final class GenderLib extends JavaPlugin implements Listener{
 					sender.sendMessage("§4You do not have access to this command.");
 					return false;
 				}
-				
 				@SuppressWarnings("deprecation")//temporarily depricated, will never be deleted by bukkit however
 				OfflinePlayer targetPlayer = getServer().getOfflinePlayer(args[0]);
 				
@@ -170,4 +194,6 @@ public final class GenderLib extends JavaPlugin implements Listener{
 		 */
 		return null;
 	}
+	
+	public static GenderLib getPlugin(){return plugin;}
 }

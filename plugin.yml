@@ -9,6 +9,13 @@ commands:
       permission: gender.set
       permission-message: You do not have permission to do this.
       
+   genderof:
+      description: View another player's selected gender
+      usage: /genderof [playername]
+      aliases: [viewgender,whatgender,seegender,lookupgender,ismale,isfemale]
+      permission: gender.view
+      permission-message: You do not have permission to do this.
+      
    male:
       description: Set your gender to male
       usage: /male
@@ -22,6 +29,10 @@ commands:
       permission-message: You do not have permission to do this.
       
 permissions:
+   gender.view:
+        description: Access to the /genderof command.
+        default: true
+        
    gender.set:
         description: Access to the /gender command.
         default: true
