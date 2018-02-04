@@ -36,8 +36,8 @@ public final class GenderLib extends JavaPlugin implements Listener{
 		}
 	};
 	
-	static Map<UUID, GenderType> onlinePlayers = null;
-	static Map<UUID, GenderType> offlinePlayers = null;
+	static Map<UUID, GenderType> onlinePlayers;
+	static Map<UUID, GenderType> offlinePlayers;
 	private static GenderLib plugin;
 	
 	@Override
@@ -85,6 +85,7 @@ public final class GenderLib extends JavaPlugin implements Listener{
 		}
 	}
 	
+	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String args[]){
 		if(cmd.getName().equals("genderof")){
 			if(args.length == 0){
