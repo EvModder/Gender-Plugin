@@ -1,11 +1,18 @@
-# Gender-Plugin
+# GenderLib
 Minecraft plugin allowing players to specify their gender
 
-Also, optionally allows for "new" gender types if the server administrator so chooses.
-This plugin is intended to be used primarily as a tool for other plugins, allowing replecement of genderless messages.
+## Purpose
+This plugin is primarily intended to be used as a tool/library for other plugins to help personalize messages\
+Supports non-binary genders if server administrators so choose.\
 
-For example, instead of "PurplePheonix has reached their destination. They are now at 20 points"
-With use of this plugin's API: "PurplePheonix has reached her destination. She is now at 20 points"
+### Usage
+Using API calls provided by this plugin, we can reformat\
+`"PurplePheonix has reached their destination. They are now at 20 points"`\
+to\
+`"PurplePheonix has reached her destination. She is now at 20 points"`
 
-TIP: Here is a handy Java/C++ shortcut you can use:
-"<a message>" + (gender == male ? "He" : "She") + "<rest of message>"
+#### Ternary operator
+Here's a handy code shortcut you can use:\
+`print("EvDoc is amazing. "+(gender == male ? "He" : "She")+" is a developer of this plugin!");`\
+or more formally:\
+`result = <boolean expression> ? <value if true> : <value if false>`
