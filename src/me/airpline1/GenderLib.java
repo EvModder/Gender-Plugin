@@ -89,18 +89,18 @@ public final class GenderLib extends JavaPlugin implements Listener{
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String args[]){
 		if(cmd.getName().equals("genderof")){
 			if(args.length == 0){
-				sender.sendMessage("§cToo few arguments");
+				sender.sendMessage("ï¿½cToo few arguments");
 				return false;
 			}
 			@SuppressWarnings("deprecation")//temporarily depricated, will never be deleted by bukkit however
 			OfflinePlayer targetPlayer = getServer().getOfflinePlayer(args[0]);
 			
 			if(targetPlayer == null){
-				sender.sendMessage("§cPlayer "+args[0]+" not found");
+				sender.sendMessage("ï¿½cPlayer "+args[0]+" not found");
 			}
 			GenderType gender = getGender(targetPlayer.getUniqueId());
-			if(gender == null) sender.sendMessage("§ePlayer "+targetPlayer.getName()+" has not specified a gender");
-			else sender.sendMessage("§ePlayer "+targetPlayer.getName()+" is §a"+gender.toString()+"§e.");
+			if(gender == null) sender.sendMessage("ï¿½ePlayer "+targetPlayer.getName()+" has not specified a gender");
+			else sender.sendMessage("ï¿½ePlayer "+targetPlayer.getName()+" is ï¿½a"+gender.toString()+"ï¿½e.");
 			return true;
 		}
 		if(cmd.getName().equals("male")){
@@ -124,36 +124,36 @@ public final class GenderLib extends JavaPlugin implements Listener{
 		
 		else if(cmd.getName().equals("gender")){
 			if(args.length == 0){
-				sender.sendMessage("§cToo few arguments");
+				sender.sendMessage("ï¿½cToo few arguments");
 				return false;
 			}
 			if(args.length == 1){
 				if(sender instanceof Player == false){
-					sender.sendMessage("§cToo few arguments");
+					sender.sendMessage("ï¿½cToo few arguments");
 					return false;
 				}
 				GenderType gender = GenderType.getGenderType(args[0]);
 				if(gender == null){
-					sender.sendMessage("§cGender "+args[0]+" is undefined");
+					sender.sendMessage("ï¿½cGender "+args[0]+" is undefined");
 					return false;
 				}
 				onlinePlayers.put(((Player)sender).getUniqueId(), gender);
 			}
 			else{
 				if(sender.hasPermission("gender.set.others")){
-					sender.sendMessage("§4You do not have access to this command.");
+					sender.sendMessage("ï¿½4You do not have access to this command.");
 					return false;
 				}
 				@SuppressWarnings("deprecation")//temporarily depricated, will never be deleted by bukkit however
 				OfflinePlayer targetPlayer = getServer().getOfflinePlayer(args[0]);
 				
 				if(targetPlayer == null){
-					sender.sendMessage("§cPlayer "+args[0]+" not found");
+					sender.sendMessage("ï¿½cPlayer "+args[0]+" not found");
 					return false;
 				}
 				GenderType gender = GenderType.getGenderType(args[1]);
 				if(gender == null){
-					sender.sendMessage("§cGender "+args[1]+" is undefined");
+					sender.sendMessage("ï¿½cGender "+args[1]+" is undefined");
 					return false;
 				}
 				
